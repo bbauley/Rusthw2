@@ -17,32 +17,27 @@ pub fn reply(message: &str) -> &str {
 
     let mut yelling = true;
     let mut question = true;
-    let remove_whitespace = message.split_whitespace(); //Remove any whitespaces
-    let clone = remove_whitespace.clone();
-    let num_of_words = remove_whitespace.count();   //TODO NEED TO CLEAN UP CODE
-    for (i, word) in clone.enumerate() {  //Loop through each word
-        let num_of_letters = word.len();
-        for (j, letter) in word.chars().enumerate() {   //Loop through each character in each word 
+    let remove_whitespace = message.trim(); //Remove any whitespaces
+    println!("remove_whitespace: {}", remove_whitespace);
+    let num_of_letters = remove_whitespace.len();   
+    for (i, letter) in remove_whitespace.chars().enumerate() {   //Loop through each letter
 
-            /* Checks for the yelling condition */
-            if yelling && letter.is_alphanumeric() {
-                if letter.is_lowercase() {
-                    println!("SET YELLING TO FALSE");
-                    yelling = false;
-                }
-            }
-
-            /*Check for question condition */
-            if question && j == num_of_words - 1 {  
-                if i == num_of_letters - 1 {        //Check the last word and letter for ?
-                    if letter != '?' {
-                        println!("SET QUESTION TO FALSE");
-                        question = false;
-                    }
-                }
+        /* Checks for the yelling condition */
+        if yelling && letter.is_alphanumeric() {
+            if letter.is_lowercase() {
+                println!("SET YELLING TO FALSE");
+                yelling = false;
             }
         }
-    }    
+
+        /*Check for question condition */
+        if question && i == num_of_letters - 1 {  
+            if letter != '?' {
+                println!("SET QUESTION TO FALSE");
+                question = false;
+            }
+        }
+    } 
 
     if yelling && question {
         "Calm down, I know what I'm doing!"
