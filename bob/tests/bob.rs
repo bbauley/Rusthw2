@@ -101,19 +101,16 @@ fn test_prattling_on() {
 }
 
 #[test]
-#[ignore]
 fn test_silence() {
     assert_eq!("Fine. Be that way!", bob::reply(""));
 }
 
 #[test]
-#[ignore]
 fn test_prolonged_silence() {
     assert_eq!("Fine. Be that way!", bob::reply("          "));
 }
 
 #[test]
-#[ignore]
 fn test_alternate_silence() {
     assert_eq!("Fine. Be that way!", bob::reply("\t\t\t\t\t\t\t\t\t\t"));
 }
@@ -140,7 +137,6 @@ fn test_ending_with_whitespace() {
 }
 
 #[test]
-#[ignore]
 fn test_other_whitespace() {
     assert_eq!("Fine. Be that way!", bob::reply("\n\r \t"));
 }
